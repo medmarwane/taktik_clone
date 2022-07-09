@@ -9,6 +9,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 
 import Logo from "../utils/tiktik-logo.png"
+import { createOrGetUser } from "../utils"
 const Navbar = () => {
   const user = false
   return (
@@ -20,7 +21,7 @@ const Navbar = () => {
       </Link>
       <div>SEARCH</div>
 
-      <div>{user ? <div>Logged In</div> : <GoogleLogin onSuccess={response => console.log(response)} onError={() => console.log("Error")} />}</div>
+      <div>{user ? <div>Logged In</div> : <GoogleLogin onSuccess={response => createOrGetUser(response)} onError={() => console.log("Error")} />}</div>
     </div>
   )
 }
