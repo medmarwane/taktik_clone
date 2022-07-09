@@ -10,8 +10,11 @@ import { useRouter } from "next/router"
 
 import Logo from "../utils/tiktik-logo.png"
 import { createOrGetUser } from "../utils"
+
+import useAuthStore from "../store/authStore"
+
 const Navbar = () => {
-  const user = false
+  const { userProfile, addUser } = useAuthStore()
   return (
     <div className="w-full flex justify-between items-center  border-b-2 border-gray-200 py-2 px-4">
       <Link href="/">
@@ -21,7 +24,7 @@ const Navbar = () => {
       </Link>
       <div>SEARCH</div>
 
-      <div>{user ? <div>Logged In</div> : <GoogleLogin onSuccess={response => createOrGetUser(response)} onError={() => console.log("Error")} />}</div>
+      <div>{userProfile ? <div>{userProfile.userName}</div> : <GoogleLogin onSuccess={response => createOrGetUser(response, addUser)} onError={() => console.log("Error")} />}</div>
     </div>
   )
 }
