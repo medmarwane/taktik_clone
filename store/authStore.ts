@@ -6,7 +6,8 @@ const authStore = (set: any) => ({
   //instant return
   userProfile: null,
 
-  addUser: (user: any) => set({ userProfile: user })
+  addUser: (user: any) => set({ userProfile: user }),
+  removeUser: () => set({ userProfile: null })
 })
 
 const useAuthStore = create(
