@@ -5,22 +5,7 @@ import { GoVerified } from "react-icons/go"
 
 import useAuthStore from "../store/authStore"
 import NoResults from "./NoResults"
-import { IUser } from "../types"
-
-interface IProps {
-  isPostingComment: boolean
-  comment: string
-  setComment: Dispatch<SetStateAction<string>>
-  addComment: (e: React.FormEvent) => void
-  comments: IComment[]
-}
-
-interface IComment {
-  comment: string
-  length?: number
-  _key: string
-  postedBy: { _ref: string; _id: string }
-}
+import { IProps, IUser } from "../types"
 
 const Comments = ({ comment, setComment, addComment, comments, isPostingComment }: IProps) => {
   const { userProfile, allUsers } = useAuthStore()

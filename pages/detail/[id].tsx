@@ -55,7 +55,7 @@ const Details = ({ postDetails }: IProps) => {
     }
   }
 
-  const addComment = async e => {
+  const addComment = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
 
     if (userProfile && comment) {
@@ -127,11 +127,12 @@ const Details = ({ postDetails }: IProps) => {
               </Link>
             </div>
           </div>
-
           <p className="px-10 text-lg text-gray-600">{post.caption}</p>
 
-          <div className="mt-10 px-10">{userProfile && <LikeButton likes={post.likes} handleLike={() => handleLike(true)} handleDislike={() => handleLike(false)} />}</div>
-          <Comments comment={comment} setComment={setComment} comments={post.comments} addComment={addComment} isPostingComment={isPostingComment} />
+          <div className="mt-10 px-10 cursor-pointer">{userProfile && <LikeButton likes={post.likes} handleLike={() => handleLike(true)} handleDislike={() => handleLike(false)} />}</div>
+          <div className="cursor-pointer">
+            <Comments comment={comment} setComment={setComment} comments={post.comments} addComment={addComment} isPostingComment={isPostingComment} />
+          </div>
         </div>
       </div>
     </div>

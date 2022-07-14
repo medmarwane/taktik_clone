@@ -24,9 +24,18 @@ export interface Video {
     _key: string
     postedBy: {
       _ref: string
+      _id: string
     }
   }[]
   userId: string
+}
+
+export interface IProps {
+  isPostingComment: boolean
+  comment: string
+  setComment: Dispatch<SetStateAction<string>>
+  addComment: (e: React.FormEvent) => void
+  comments: IComment[]
 }
 
 export interface IUser {
@@ -34,4 +43,11 @@ export interface IUser {
   _type: string
   userName: string
   image: string
+}
+
+interface IComment {
+  comment: string
+  length?: number
+  _key: string
+  postedBy: { _ref: string; _id: string }
 }
